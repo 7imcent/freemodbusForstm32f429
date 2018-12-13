@@ -40,14 +40,6 @@ PR_BEGIN_EXTERN_C
 #include "mbport.h"
 #include "mbproto.h"
 
-extern void
-xMBUtilSetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits, \
-                UCHAR ucValue );
-
-extern UCHAR
-xMBUtilGetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits );
-
-
 /*! \defgroup modbus Modbus
  * \code #include "mb.h" \endcode
  *

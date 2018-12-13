@@ -33,7 +33,7 @@ static USHORT   usRegInputBuf[REG_INPUT_NREGS];
 
 /* ----------------------- Start implementation -----------------------------*/
 int
-main( void )
+main1( void )
 {
     eMBErrorCode    eStatus;
 
@@ -51,6 +51,7 @@ main( void )
     }
 }
 
+/*
 eMBErrorCode
 eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
 {
@@ -99,3 +100,4 @@ eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
 {
     return MB_ENOREG;
 }
+*/

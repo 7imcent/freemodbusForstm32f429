@@ -212,6 +212,14 @@ eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )
 
         /* Activate the transmitter. */
         eSndState = STATE_TX_XMIT;
+		
+		
+		/*插入代码 启动第一次发送，这样才可以进入发送完成中断*/
+//        xMBPortSerialPutByte( ( CHAR )*pucSndBufferCur );
+//        pucSndBufferCur++; 
+//        usSndBufferCount--;
+		
+		
         vMBPortSerialEnable( FALSE, TRUE );
     }
     else
@@ -288,7 +296,7 @@ xMBRTUTransmitFSM( void )
     BOOL            xNeedPoll = FALSE;
 
     assert( eRcvState == STATE_RX_IDLE );
-
+//printf("rtureceivefsm\r\n"); //发送一个字节进入一次
     switch ( eSndState )
     {
         /* We should not get a transmitter event if the transmitter is in

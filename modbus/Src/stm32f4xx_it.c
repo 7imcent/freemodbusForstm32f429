@@ -36,7 +36,8 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
-
+extern void prvvUARTTxReadyISR( void );
+extern void prvvUARTRxISR( void );
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -184,7 +185,16 @@ void USART1_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-
+//	if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE)!= RESET) 
+//    {
+//        prvvUARTRxISR();//接收中断处理函数
+//    }
+	if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_TXE)!= RESET) 
+    {
+        prvvUARTTxReadyISR();//发送完成终端处理函数
+		//__HAL_UART_ENABLE_IT(&Modbus_UartHandle, UART_IT_TXE);
+    }
+	//HAL_NVIC_ClearPendingIRQ(USART2_IRQn);
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
